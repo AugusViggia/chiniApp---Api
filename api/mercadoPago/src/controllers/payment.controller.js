@@ -27,7 +27,7 @@ export const createOrder = async (req, res) => {
     auto_return: "approved",
   });
   
-  // console.log("soy el resultado de mercadopago.create: ", result);
+  console.log("soy el resultado de mercadopago.create: ", result);
   // console.log("init_point:", result.body.init_point);
   
   res.send(result.body);
