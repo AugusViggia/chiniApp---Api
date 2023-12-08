@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const createOrder = async (req, res) => {
-  console.log("Body de la solicitud: ", req.body);
+  // console.log("Body de la solicitud: ", req.body);
   const { cartList } = req.body;
   // console.log("este el totalPrice: ", totalPrice);
 
@@ -20,16 +20,17 @@ export const createOrder = async (req, res) => {
       quantity: 1,
     })),
     back_urls: {
-      success: `${APP_HOME_URL}`,
+      success: `${HOST}/success`,
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },
     notification_url: "https://d373-190-194-144-75.ngrok.io/webhook",
     auto_return: "approved",
+    redirect_urls: { failure: "", pending: "", success: `${APP_HOME_URL}` },
   });
   
-  console.log("soy el resultado de mercadopago.create: ", result);
-  console.log("init_point:", result.body.init_point);
+  // console.log("soy el resultado de mercadopago.create: ", result);
+  // console.log("init_point:", result.body.init_point);
   
   res.send(result.body);
 };

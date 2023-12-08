@@ -16,7 +16,7 @@ export const sendEmail = async ({ products, totalPay, clientEmail }) => {
 
     await transporter.sendMail(email);
 
-    // console.log(email);
+    console.log("soy el email: ", email);
   } catch (error) {
     throw console.log(error);
   }
