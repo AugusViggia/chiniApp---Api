@@ -30,11 +30,11 @@ export const successEvent = async (req, res) => {
 
             await sendEmail({ products, totalPay, clientEmail });
         }
-        // res.json(req.body);
-
+        
         console.log("a ese link nos redirigimos: ", return_Url);
-
-        res.redirect(return_Url);
+        
+        res.json(req.body);
+        // res.redirect(return_Url);
         return;
     } catch (error) {
         console.error("Error:", error);
