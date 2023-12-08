@@ -1,5 +1,5 @@
 import mercadopago from "mercadopago";
-import { HOST, APP_HOME_URL } from "../../config.js";
+import { HOST } from "../../config.js";
 import { sendEmail } from "../../../nodemailer/src/controllers/nodemailer.controllers.js";
 import dotenv from "dotenv";
 dotenv.config();
