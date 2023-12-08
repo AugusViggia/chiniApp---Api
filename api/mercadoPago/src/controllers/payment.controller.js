@@ -20,7 +20,7 @@ export const createOrder = async (req, res) => {
       quantity: 1,
     })),
     back_urls: {
-      success: `${APP_HOME_URL}`,
+      success: `${APP_HOME_URL}/success`,
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },
