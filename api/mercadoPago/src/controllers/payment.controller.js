@@ -21,7 +21,7 @@ mercadopago.configure({
       quantity: 1,
     })),
     back_urls: {
-      success: `${HOST}/success`,
+      success: "https://chiniapp-front-production.up.railway.app/",
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },
