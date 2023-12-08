@@ -1,5 +1,5 @@
 import mercadopago from "mercadopago";
-import { HOST } from "../../config.js";
+import { HOST, APP_HOME_URL } from "../../config.js";
 import { sendEmail } from "../../../nodemailer/src/controllers/nodemailer.controllers.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -10,7 +10,7 @@ export const createOrder = async (req, res) => {
   // console.log("este el totalPrice: ", totalPrice);
 
 mercadopago.configure({
-  access_token: process.env.ACCESS_TOKEN,
+  access_token: "TEST-1503163077703643-112015-b8521d307a18cb53fba085bd7425f08d-1523637178",
 });
 
   const result = await mercadopago.preferences.create({
@@ -21,7 +21,7 @@ mercadopago.configure({
       quantity: 1,
     })),
     back_urls: {
-      success: "https://chiniapp-front-production.up.railway.app/",
+      success: `${HOST}/success`,
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },
@@ -51,7 +51,7 @@ export const recieveWebhook = async (req, res) => {
 };
 
 export const successEvent = async (req, res) => {
-  const return_Url = "https://chiniapp-front-production.up.railway.app/";
+  const return_Url = `${APP_HOME_URL}`;
 
   try {
     if (req.query && req.query.status === "approved") {
