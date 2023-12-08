@@ -31,6 +31,8 @@ export const successEvent = async (req, res) => {
         }
         // res.json(req.body);
 
+        console.log("a ese link nos redirigimos: ", return_Url);
+
         res.redirect(return_Url);
         return;
     } catch (error) {

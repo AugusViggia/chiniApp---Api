@@ -8,9 +8,9 @@ export const createOrder = async (req, res) => {
   const { cartList } = req.body;
   // console.log("este el totalPrice: ", totalPrice);
 
-mercadopago.configure({
-  access_token: process.env.ACCESS_TOKEN,
-});
+  mercadopago.configure({
+    access_token: "TEST-1503163077703643-112015-b8521d307a18cb53fba085bd7425f08d-1523637178",
+  });
 
   const result = await mercadopago.preferences.create({
     items: cartList.map((product) => ({
@@ -20,7 +20,7 @@ mercadopago.configure({
       quantity: 1,
     })),
     back_urls: {
-      success: `${HOST}/success`,
+      success: `${APP_HOME_URL}`,
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },
@@ -28,8 +28,8 @@ mercadopago.configure({
     auto_return: "approved",
   });
   
-  // console.log(result);
-  // console.log("init_point:", result.body.init_point);
+  console.log("soy el resultado de mercadopago.create: ", result);
+  console.log("init_point:", result.body.init_point);
   
   res.send(result.body);
 };
