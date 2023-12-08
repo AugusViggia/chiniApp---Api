@@ -20,13 +20,12 @@ export const createOrder = async (req, res) => {
       quantity: 1,
     })),
     back_urls: {
-      success: `${HOST}/success`,
+      success: `${APP_HOME_URL}`,
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },
     notification_url: "https://d373-190-194-144-75.ngrok.io/webhook",
     auto_return: "approved",
-    redirect_urls: { failure: "", pending: "", success: `${APP_HOME_URL}` },
   });
   
   // console.log("soy el resultado de mercadopago.create: ", result);
