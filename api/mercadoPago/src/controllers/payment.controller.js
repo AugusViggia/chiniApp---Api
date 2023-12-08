@@ -1,6 +1,5 @@
 import mercadopago from "mercadopago";
 import { HOST, APP_HOME_URL } from "../../config.js";
-import { sendEmail } from "../../../nodemailer/src/controllers/nodemailer.controllers.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -10,7 +9,7 @@ export const createOrder = async (req, res) => {
   // console.log("este el totalPrice: ", totalPrice);
 
 mercadopago.configure({
-  access_token: "TEST-1503163077703643-112015-b8521d307a18cb53fba085bd7425f08d-1523637178",
+  access_token: process.env.ACCESS_TOKEN,
 });
 
   const result = await mercadopago.preferences.create({
@@ -47,44 +46,5 @@ export const recieveWebhook = async (req, res) => {
     res.sendStatus(204);
   } catch (error) {
     return res.sendStatus(500).json({ error: error.message });
-  }
-};
-
-export const successEvent = async (req, res) => {
-  const return_Url = `${APP_HOME_URL}`;
-
-  try {
-    if (req.query && req.query.status === "approved") {
-      
-      const fetchPaymentDetails = async (paymentId) => {
-        try {
-          const payment = await mercadopago.payment.findById(paymentId);
-          return payment;
-        } catch (error) {
-          console.error("Error al obtener detalles de pago:", error.message);
-          throw error;
-        }
-      };
-
-      const paymentDetails = await fetchPaymentDetails(req.query.payment_id);
-      const products = paymentDetails.body.additional_info.items;
-      const totalPay = paymentDetails.body.transaction_amount;
-      const clientEmail = paymentDetails.body.payer.email
-
-
-      console.log("soy los paymentDetails: ", paymentDetails);
-      // console.log("soy el email del cliente: ", clientEmail);
-      // console.log("soy los items: ", products);
-      // console.log("soy el total: ", totalPay);
-
-      await sendEmail({ products, totalPay, clientEmail });
-    }
-    // res.json(req.body);
-
-    res.redirect(return_Url);
-    return;
-  } catch (error) {
-    console.error("Error:", error);
-    res.status(500).send("Internal Server Error");
   }
 };

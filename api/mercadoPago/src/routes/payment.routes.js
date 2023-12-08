@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { createOrder, recieveWebhook, successEvent } from "../controllers/payment.controller.js";
+import { createOrder, recieveWebhook } from "../controllers/payment.controller.js";
+import { successEvent } from "../controllers/success.controllers.js";
 
 const router = Router();
 
