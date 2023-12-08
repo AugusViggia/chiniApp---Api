@@ -51,7 +51,7 @@ export const recieveWebhook = async (req, res) => {
 };
 
 export const successEvent = async (req, res) => {
-  const return_Url = process.env.APP_HOME_URL;
+  const return_Url = "https://chiniapp-front-production.up.railway.app/";
 
   try {
     if (req.query && req.query.status === "approved") {
