@@ -1,5 +1,5 @@
 import mercadopago from "mercadopago";
-import { HOST, APP_HOME_URL } from "../../config.js";
+import { HOST } from "../../config.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -9,8 +9,7 @@ export const createOrder = async (req, res) => {
   // console.log("este el totalPrice: ", totalPrice);
 
   mercadopago.configure({
-    access_token: "TEST-1503163077703643-112015-b8521d307a18cb53fba085bd7425f08d-1523637178",
-  });
+    access_token: process.env.ACCESS_TOKEN});
 
   const result = await mercadopago.preferences.create({
     items: cartList.map((product) => ({

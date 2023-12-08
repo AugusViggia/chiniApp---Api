@@ -1,9 +1,10 @@
 import mercadopago from "mercadopago";
-import { APP_HOME_URL } from "../../config.js";
 import { sendEmail } from "../../../nodemailer/src/controllers/nodemailer.controllers.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const successEvent = async (req, res) => {
-    const return_Url = `${APP_HOME_URL}`;
+    const return_Url = process.env.APP_HOME_URL;
 
     try {
         if (req.query && req.query.status === "approved") {
