@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const successEvent = async (req, res) => {
-    const return_Url = process.env.APP_HOME_URL;
+    const return_Url = "https://chiniapp-front-production.up.railway.app/";
 
     try {
         if (req.query && req.query.status === "approved") {
@@ -33,7 +33,6 @@ export const successEvent = async (req, res) => {
         
         console.log("a ese link nos redirigimos: ", return_Url);
         
-        // res.json({redirectUrl: return_Url});
         res.redirect(return_Url);
         return;
     } catch (error) {

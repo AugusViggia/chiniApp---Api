@@ -9,7 +9,9 @@ export const createOrder = async (req, res) => {
   // console.log("este el totalPrice: ", totalPrice);
 
   mercadopago.configure({
-    access_token: process.env.ACCESS_TOKEN});
+    access_token:
+      "TEST-1503163077703643-112015-b8521d307a18cb53fba085bd7425f08d-1523637178",
+  });
 
   const result = await mercadopago.preferences.create({
     items: cartList.map((product) => ({
@@ -37,13 +39,16 @@ export const recieveWebhook = async (req, res) => {
   const payment = req.query;
 
   try {
+    console.log("Webhook Received:", payment);
+
     if (payment.type === "payment") {
       const data = await mercadopago.payment.findById(req.query["data.id"]);
-      console.log(data);
+      console.log("Payment Data:", data);
     }
 
     res.sendStatus(204);
   } catch (error) {
+    console.error("Webhook Error:", error.message);
     return res.sendStatus(500).json({ error: error.message });
   }
 };
