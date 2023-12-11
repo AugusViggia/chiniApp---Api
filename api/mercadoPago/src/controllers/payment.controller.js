@@ -27,6 +27,11 @@ export const createOrder = async (req, res) => {
     },
     notification_url: "https://d373-190-194-144-75.ngrok.io/webhook",
     auto_return: "approved",
+    redirect_urls: {
+      failure: `${HOST}/failure`,
+      pending: `${HOST}/pending`,
+      success: "https://chiniapp-front-production.up.railway.app/",
+    },
   });
   
   console.log("soy el resultado de mercadopago.create: ", result);

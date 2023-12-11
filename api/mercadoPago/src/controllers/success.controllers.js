@@ -5,6 +5,7 @@ dotenv.config();
 
 export const successEvent = async (req, res) => {
     const return_Url = "https://chiniapp-front-production.up.railway.app/";
+    console.log(return_Url);
 
     try {
         if (req.query && req.query.status === "approved") {
@@ -33,18 +34,8 @@ export const successEvent = async (req, res) => {
         
         console.log("a ese link nos redirigimos: ", return_Url);
         
-        res.send(`
-            <html>
-                <head>
-                    <script>
-                        window.location.href = '${return_Url}';
-                    </script>
-                </head>
-                <body>
-                    Redirigiendo...
-                </body>
-            </html>
-        `);
+        // res.redirect(return_Url);
+        res.send(result.body);
         return;
     } catch (error) {
         console.error("Error:", error);
