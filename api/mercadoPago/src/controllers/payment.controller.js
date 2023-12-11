@@ -37,7 +37,7 @@ export const createOrder = async (req, res) => {
   console.log("soy el resultado de mercadopago.create: ", result);
   // console.log("init_point:", result.body.init_point);
   
-  res.send(result.body.init_point);
+  res.send(result.body);
 };
 
 export const recieveWebhook = async (req, res) => {
