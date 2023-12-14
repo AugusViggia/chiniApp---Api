@@ -14,15 +14,15 @@ export const createOrder = async (req, res) => {
   });
 
   const result = await mercadopago.preferences.create({
+    // reason: product.name, con esta propiedad modificas el ticket para ponerle los nombres del producto.
     items: cartList.map((product) => ({
-      reason: product.name,
       title: product.name,
       currency_id: "ARS",
       unit_price: product.price,
       quantity: 1,
     })),
     back_urls: {
-      success: `/success`,
+      success: `${HOST}/success`,
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },

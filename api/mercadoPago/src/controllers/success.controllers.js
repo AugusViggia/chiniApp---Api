@@ -5,7 +5,7 @@ dotenv.config();
 
 export const successEvent = async (req, res) => {
     console.log("Controlador successEvent ejecutándose...");
-    const return_Url = "https://chiniapp-front-production.up.railway.app/";
+    const return_Url = "https://chiniapp-front-production.up.railway.app/payment";
     console.log(return_Url);
 
     try {
@@ -25,7 +25,7 @@ export const successEvent = async (req, res) => {
             const totalPay = paymentDetails.body.transaction_amount;
             const clientEmail = paymentDetails.body.payer.email;
 
-            console.log("soy los paymentDetails: ", paymentDetails);
+            // console.log("soy los paymentDetails: ", paymentDetails);
             // console.log("soy el email del cliente: ", clientEmail);
             // console.log("soy los items: ", products);
             // console.log("soy el total: ", totalPay);
@@ -35,8 +35,8 @@ export const successEvent = async (req, res) => {
         
         console.log("a ese link nos redirigimos: ", return_Url);
         
-        // res.redirect(return_Url);
-        res.send(result.body);
+        res.redirect(return_Url);
+        // res.send(result.body);
         return;
     } catch (error) {
         console.error("Error:", error);
