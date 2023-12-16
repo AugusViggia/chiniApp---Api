@@ -25,7 +25,7 @@ export const createOrder = async (req, res) => {
       failure: `${HOST}/failure`,
       pending: `${HOST}/pending`,
     },
-    notification_url: process.env.NGROK_URL,
+    notification_url: `${process.env.NGROK_URL}/webhook`,
     auto_return: "approved",
   });
   
