@@ -27,11 +27,11 @@ export const createOrder = async (req, res) => {
         failure: `${HOST}/failure`,
         pending: `${HOST}/pending`,
       },
-      notification_url: "https://be32-190-194-144-75.ngrok.io/webhook",
+      notification_url: "https://fcb6-190-194-144-75.ngrok-free.app/webhook",
       auto_return: "approved",
     });
     
-    console.log("soy el resultado de mercadopago.create: ", result);
+    // console.log("soy el resultado de mercadopago.create: ", result);
     // console.log("init_point:", result.body.init_point);
     
     res.send(result.body);
@@ -39,21 +39,21 @@ export const createOrder = async (req, res) => {
       console.error("Error:", error);
       res.status(500).send("Internal Server Error");
   }
-
 };
 
 export const recieveWebhook = async (req, res) => {
-  const payment = req.query;
+  const payment = req.body;
+  console.log(payment);
 
   try {
-    console.log("Webhook Received:", payment);
+    // console.log("Webhook Received:", payment);
 
     if (payment.type === "payment") {
       const data = await mercadopago.payment.findById(req.query["data.id"]);
-      console.log("Payment Data:", data);
+      // console.log("Payment Data:", data);
     }
 
-    res.sendStatus(204);
+    res.status(200).send("webhook");
   } catch (error) {
     console.error("Webhook Error:", error.message);
     return res.sendStatus(500).json({ error: error.message });
