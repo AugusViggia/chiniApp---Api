@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const successEvent = async (req, res) => {
-    // console.log("Controlador successEvent ejecutándose...");
+    console.log("Controlador successEvent ejecutándose...");
     // const return_Url = process.env.APP_HOME_URL;
     const return_Url = "https://chiniapp-front-production.up.railway.app/";
     // console.log(return_Url);
-    // console.log("soy req: ", req.query);
+    console.log("Soy req.query: ", req.query);
     // console.log("soy res: ", res.status);
 
     try {
@@ -16,6 +16,8 @@ export const successEvent = async (req, res) => {
             const fetchPaymentDetails = async (paymentId) => {
                 try {
                     const payment = await mercadopago.payment.findById(paymentId);
+                    console.log("Soy el payment: ", payment);
+
                     return payment;
                 } catch (error) {
                     console.error("Error al obtener detalles de pago:", error.message);
