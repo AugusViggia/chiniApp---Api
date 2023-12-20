@@ -29,12 +29,17 @@ export const createOrder = async (req, res) => {
         quantity: 1,
       })),
       back_urls: {
-        success: `https://chiniapp-front-production.up.railway.app/send-email/success`,
+        success: `${HOST}/success`,
         failure: `${HOST}/failure`,
         pending: `${HOST}/pending`,
       },
+      redirect_urls: {
+        failure: "/feilure",
+        pending: "/pending",
+        success: "${HOST}/success",
+      },
       notification_url: "https://fcb6-190-194-144-75.ngrok-free.app/webhook",
-      auto_return: "approved",
+      auto_return: "approved"
     });
 
     // const paymentAprove = result.body.auto_return;
