@@ -7,9 +7,9 @@ dotenv.config();
 export const createOrder = async (req, res) => {
   // console.log("Body de la solicitud: ", req.body);
   const { cartList, totalPrice } = req.body;
-  const products = cartList;
-  const totalPay = totalPrice;
-  const return_Url = "https://chiniapp-front-production.up.railway.app/";
+  // const products = cartList;
+  // const totalPay = totalPrice;
+  // const return_Url = "https://chiniapp-front-production.up.railway.app/";
   // console.log("este el totalPrice: ", totalPrice);
 
   try {
@@ -29,7 +29,7 @@ export const createOrder = async (req, res) => {
         quantity: 1,
       })),
       back_urls: {
-        success: `https://chiniapp-front-production.up.railway.app/`,
+        success: `https://chiniapp-front-production.up.railway.app/send-email/success`,
         failure: `${HOST}/failure`,
         pending: `${HOST}/pending`,
       },
@@ -37,17 +37,17 @@ export const createOrder = async (req, res) => {
       auto_return: "approved",
     });
 
-    const paymentAprove = result.body.auto_return;
-    const clientEmail = result.body.payer.email;
+    // const paymentAprove = result.body.auto_return;
+    // const clientEmail = result.body.payer.email;
 
-    if (paymentAprove === "approved") {
-      await sendEmail({ products, totalPay, clientEmail });
-      console.log("Se mando el email");
-    }
+    // if (paymentAprove === "approved") {
+    //   await sendEmail({ products, totalPay, clientEmail });
+    //   console.log("Se mando el email");
+    // }
     
     console.log("Soy el resultado de mercadopago.create: ", result);
-    console.log("Soy el clientEmail: ", result.body.payer.email);
-    console.log("Soy el auto_return: ", result.body.auto_return);
+    // console.log("Soy el clientEmail: ", result.body.payer.email);
+    // console.log("Soy el auto_return: ", result.body.auto_return);
     // console.log("init_point:", result.body.init_point);
     // res.redirect(return_Url);
     res.send(result.body);
