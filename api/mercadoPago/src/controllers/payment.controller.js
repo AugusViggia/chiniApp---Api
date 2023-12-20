@@ -29,17 +29,17 @@ export const createOrder = async (req, res) => {
         quantity: 1,
       })),
       back_urls: {
-        success: `${HOST}/success`,
-        failure: `${HOST}/failure`,
-        pending: `${HOST}/pending`,
+        success: `https://chiniapp-api-production.up.railway.app//success`,
+        failure: `https://chiniapp-api-production.up.railway.app//failure`,
+        pending: `https://chiniapp-api-production.up.railway.app//pending`,
       },
       redirect_urls: {
         failure: "/feilure",
         pending: "/pending",
-        success: `${HOST}/success`,
+        success: `https://chiniapp-api-production.up.railway.app//success`,
       },
       notification_url: "https://fcb6-190-194-144-75.ngrok-free.app/webhook",
-      auto_return: "approved"
+      auto_return: "approved",
     });
 
     // const paymentAprove = result.body.auto_return;
