@@ -5,9 +5,9 @@ dotenv.config();
 
 export const successEvent = async (req, res) => {
     console.log("Controlador successEvent ejecutándose...");
-    const return_Url = "http://localhost:3001/";
+    // const return_Url = "http://localhost:3001/";
     // const return_Url = process.env.APP_HOME_URL;
-    // const return_Url = "https://chiniapp-front-production.up.railway.app/success";
+    const return_Url = "https://chiniapp-front-production.up.railway.app/";
     // console.log(return_Url);
     console.log("Soy req.query: ", req.query);
     console.log("soy res: ", res.status);

@@ -36,7 +36,7 @@ export const createOrder = async (req, res) => {
       redirect_urls: {
         failure: "/feilure",
         pending: "/pending",
-        success: "${HOST}/success",
+        success: `${HOST}/success`,
       },
       notification_url: "https://fcb6-190-194-144-75.ngrok-free.app/webhook",
       auto_return: "approved"
