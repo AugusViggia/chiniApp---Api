@@ -2,7 +2,6 @@ import { transporter } from "../nodemailerConfig.js";
 import { generateHtml } from "../emailHtml.js";
 
 export const sendEmail = async ({ products, totalPay, clientEmail }) => {
-  // console.log("se esta ejecutando sendEmail...");
   try {
     const emailHtml = generateHtml({ products, totalPay });
 
@@ -16,8 +15,7 @@ export const sendEmail = async ({ products, totalPay, clientEmail }) => {
     };
 
     await transporter.sendMail(email);
-
-    // console.log("soy el email: ", email);
+    
   } catch (error) {
     throw console.log(error);
   }

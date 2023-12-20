@@ -1,16 +1,9 @@
 import mercadopago from "mercadopago";
-import { HOST } from "../../config.js";
-import { sendEmail } from "../../../nodemailer/src/controllers/nodemailer.controllers.js";
 import dotenv from "dotenv";
 dotenv.config();
 
 export const createOrder = async (req, res) => {
-  // console.log("Body de la solicitud: ", req.body);
-  const { cartList, totalPrice } = req.body;
-  // const products = cartList;
-  // const totalPay = totalPrice;
-  // const return_Url = "https://chiniapp-front-production.up.railway.app/";
-  // console.log("este el totalPrice: ", totalPrice);
+  const { cartList } = req.body;
 
   try {
     mercadopago.configure({
@@ -42,21 +35,7 @@ export const createOrder = async (req, res) => {
       auto_return: "approved",
     });
 
-    // const paymentAprove = result.body.auto_return;
-    // const clientEmail = result.body.payer.email;
-
-    // if (paymentAprove === "approved") {
-    //   await sendEmail({ products, totalPay, clientEmail });
-    //   console.log("Se mando el email");
-    // }
-    
-    console.log("Soy el resultado de mercadopago.create: ", result);
-    // console.log("Soy el clientEmail: ", result.body.payer.email);
-    // console.log("Soy el auto_return: ", result.body.auto_return);
-    // console.log("init_point:", result.body.init_point);
-    // res.redirect(return_Url);
     res.send(result.body);
-    console.log("Me estoy yendo de createOrder");
   } catch (error) {
       console.error("Error:", error);
       res.status(500).send("Internal Server Error");
@@ -68,11 +47,9 @@ export const recieveWebhook = async (req, res) => {
   console.log(payment);
 
   try {
-    // console.log("Webhook Received:", payment);
-
     if (payment.type === "payment") {
       const data = await mercadopago.payment.findById(req.query["data.id"]);
-      // console.log("Payment Data:", data);
+      console.log("Payment Data:", data);
     }
 
     res.status(200).send("webhook");
