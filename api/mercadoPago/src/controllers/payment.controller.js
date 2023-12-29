@@ -1,6 +1,5 @@
 import mercadopago from "mercadopago";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 export const createOrder = async (req, res) => {
   const { cartList } = req.body;

@@ -5,8 +5,11 @@ import { PORT } from "./mercadoPago/config.js";
 import morgan from "morgan";
 import cors from "cors";
 import bodyParser from "body-parser";
+import dotenv from 'dotenv';
 
 const app = express();
+
+dotenv.config();
 
 app.use(cors());
 app.use(express.json());
