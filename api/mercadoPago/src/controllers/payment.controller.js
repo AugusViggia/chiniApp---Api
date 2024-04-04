@@ -1,15 +1,14 @@
 import mercadopago from "mercadopago";
 
-
 export const createOrder = async (req, res) => {
   const { cartList } = req.body;
 
   try {
     mercadopago.configure({
-      client_id: "TEST-1522152661",
-      client_secret: "TEST-6854888482659911",
+      client_id: "1418850663386812",
+      client_secret: "91ogiySmYydTwhyIJhnLvrjf0bgziBnk",
       access_token:
-        "TEST-1503163077703643-112015-b8521d307a18cb53fba085bd7425f08d-1523637178",
+        "APP_USR-1418850663386812-112014-e79ec7ac67d75fb39e6c57e5d7795955-174088517",
     });
   
     const result = await mercadopago.preferences.create({
