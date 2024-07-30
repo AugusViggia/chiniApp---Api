@@ -6,11 +6,11 @@ export const sendEmail = async ({ products, totalPay, clientEmail }) => {
     const emailHtml = generateHtml({ products, totalPay });
 
     const email = {
-      from: "chiniBakery00@gmail.com",
+      from: "augustoempresaprueba@gmail.com",
       to: [clientEmail, "augusto.viggiano@gmail.com"]
         .filter(Boolean)
         .join(", "),
-      subject: "Confirmación de compra en ChiniBakery",
+      subject: "Confirmación de compra en BakeryApp",
       html: emailHtml,
     };
 

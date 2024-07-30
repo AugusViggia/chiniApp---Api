@@ -1,6 +1,6 @@
 export const generateHtml = ({ products, totalPay }) => {
   return `
-    <p>¡Gracias por tu compra en ChiniBakery!</p>
+    <p>¡Gracias por tu compra en BakeryApp!</p>
     <img />
     <p>Detalles de la compra:</p>
     <ul>
@@ -9,6 +9,6 @@ export const generateHtml = ({ products, totalPay }) => {
         .join("")}
     </ul>
     <p>Total pagado: $${totalPay}</p>
-    <p>¡Esperamos que disfrutes de tus deliciosas tortas!</p>
+    <p>¡Esperamos que disfrutes de nuestros ricos sabores!</p>
     `;
 };
